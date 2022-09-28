@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "Nft+1EKILJCrflhIBDkKxvcC/BsZuF2+ZVz0KzaA2FnwbGNtzdXHTKa4tBX17k/VfIWF8tcvFeRJo5ifeJiCCA==",
+  "success": true,
+  "projectFilePath": "/Users/wenjia.zhang/Projects/ShoppingList/ShoppingList/ShoppingList.csproj",
+  "expectedPackageFiles": [
+    "/Users/wenjia.zhang/.nuget/packages/microsoft.netcore.platforms/1.1.0/microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "/Users/wenjia.zhang/.nuget/packages/netstandard.library/2.0.3/netstandard.library.2.0.3.nupkg.sha512",
+    "/Users/wenjia.zhang/.nuget/packages/system.numerics.vectors/4.5.0/system.numerics.vectors.4.5.0.nupkg.sha512",
+    "/Users/wenjia.zhang/.nuget/packages/xamarin.essentials/1.6.1/xamarin.essentials.1.6.1.nupkg.sha512",
+    "/Users/wenjia.zhang/.nuget/packages/xamarin.forms/5.0.0.2012/xamarin.forms.5.0.0.2012.nupkg.sha512"
+  ],
+  "logs": []
+}
