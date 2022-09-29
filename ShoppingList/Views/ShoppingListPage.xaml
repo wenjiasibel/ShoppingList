@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:view="clr-namespace:ShoppingList.Views;assembly=ShoppingList"
+    xmlns:viewModel="clr-namespace:ShoppingList.ViewModels;assembly=ShoppingList"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ShoppingList.Views.ShoppingListPage"
+    x:DataType="viewModel:ShoppingListPageViewModel">
+    <ContentPage.Content>
+        <Grid Margin="20, 10, 20, 10"
+              RowDefinitions="50, *">
+            <Label Grid.Row="0"
+                   Text="Add"
+                   HorizontalOptions="End">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding AddItemClickedCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+            <RelativeLayout Grid.Row="1"
+                            Margin="{OnPlatform Android='0,0,0,28', iOS='0,0,0,36'}">
+
+                <StackLayout RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                                    Property=Width,
+                                                                                    Factor=1}"
+                             Spacing="0"
+                             BindableLayout.ItemsSource="{Binding ShoppingListItemViewModels}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <view:ShoppingListItem />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+
+                </StackLayout>
+            </RelativeLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:viewModel="clr-namespace:ShoppingList.ViewModels;assembly=ShoppingList"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ShoppingList.Views.ShoppingListItem"
+    x:DataType="viewModel:ShoppingListItemViewModel">
+    <ContentPage.Content>
+        <Grid ColumnDefinitions="30, auto, 10">
+            <Entry Grid.Column="0"
+                   Text="{Binding Quantity}"
+                   Keyboard="Numeric"/>
+
+            <Label Grid.Column="1"
+                   Text="{Binding Name}"/>
+
+            <Label Grid.Column="2"
+                   Text="X">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding DeleteClickedCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
