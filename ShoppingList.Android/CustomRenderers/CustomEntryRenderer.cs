@@ -22,7 +22,6 @@ namespace ShoppingList.Droid.CustomRenderers
                 var gradientDrawable = new GradientDrawable();
                 gradientDrawable.SetCornerRadius(50);
                 gradientDrawable.SetStroke(5, Android.Graphics.Color.Brown);
-                //gradientDrawable.SetColor(Android.Graphics.Color.Brown);
                 Control.SetBackground(gradientDrawable);
                 Control.SetPadding(60, Control.PaddingTop, Control.PaddingRight,
                     Control.PaddingBottom);

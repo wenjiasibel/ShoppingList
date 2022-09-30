@@ -23,7 +23,6 @@ namespace ShoppingList.iOS.CustomRenderers
                 Control.Layer.CornerRadius = 50;
                 Control.Layer.BorderWidth = 2f;
                 Control.Layer.BorderColor = Color.Brown.ToCGColor();
-                Control.Layer.BackgroundColor = Color.Brown.ToCGColor();
 
                 Control.LeftView = new UIKit.UIView(new CGRect(0, 0, 10, 0));
                 Control.LeftViewMode = UIKit.UITextFieldViewMode.Always;
