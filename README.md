@@ -11,13 +11,13 @@ You can
 3) Change the quantity of an item.
 4) Delete an item.
 
-![/images/listPage.jpg]
+![List Page](/images/listPage.jpg)
 
 ## Adding a New Item
 When you click on "Add" on the main page, you are taken to a new page to create a new shopping list item.
 Fill out the item name and quantity, then click "OK".
 
-![/images/addItemPage.jpg]
+![New Item Page](/images/addItemPage.jpg)
 
 ## Storage
 The app will store any updates made to your shopping list so you can pick up right where you left off.
