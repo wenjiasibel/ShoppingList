@@ -68,6 +68,7 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CustomRenderers\CustomEntryRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -132,5 +133,8 @@
       <Project>{579A4E3F-D622-416A-8EFF-0B7F3BFE63A2}</Project>
       <Name>ShoppingList</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CustomRenderers\" />
   </ItemGroup>
 </Project>

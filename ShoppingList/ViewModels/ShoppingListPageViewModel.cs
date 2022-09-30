@@ -35,6 +35,15 @@ namespace ShoppingList.ViewModels
         public void Initialize(INavigationParameters parameters)
         {
             // Initialize list items
+            ShoppingListItemViewModels.Add(new ShoppingListItemViewModel()
+            {
+                Name = "Apple pancake",
+                Quantity = 2,
+                OnDeleteClicked = x =>
+                {
+                    ShoppingListItemViewModels.Remove(x);
+                }
+        });
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)

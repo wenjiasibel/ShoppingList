@@ -19,9 +19,11 @@
     <None Remove="Prism.DryIoc.Forms" />
     <None Remove="ViewModels\" />
     <None Remove="Views\" />
+    <None Remove="CustomViews\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
+    <Folder Include="CustomViews\" />
   </ItemGroup>
 </Project>

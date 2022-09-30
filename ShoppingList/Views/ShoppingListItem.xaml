@@ -1,25 +1,47 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentView
     xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:customView="clr-namespace:ShoppingList.CustomViews;assembly=ShoppingList"
     xmlns:viewModel="clr-namespace:ShoppingList.ViewModels;assembly=ShoppingList"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="ShoppingList.Views.ShoppingListItem"
     x:DataType="viewModel:ShoppingListItemViewModel">
     <ContentView.Content>
-        <Grid ColumnDefinitions="30, auto, 10">
-            <Entry Grid.Column="0"
-                   Text="{Binding Quantity}"
-                   Keyboard="Numeric"/>
+        <Grid ColumnDefinitions="30, 3*, *, 15"
+              ColumnSpacing="5"
+              RowDefinitions="*, auto">
+            <CheckBox Grid.Column="0"
+                      Color="Brown"/>
 
             <Label Grid.Column="1"
+                   FontSize="16"
+                   TextColor="#2b170d"
+                   VerticalOptions="Center"
                    Text="{Binding Name}"/>
 
-            <Label Grid.Column="2"
-                   Text="X">
+            <customView:CustomEntry Grid.Column="2"
+                                    Margin="0, 0, 5, 0"
+                                    Text="{Binding Quantity}"
+                                    FontSize="16"
+                                    TextColor="#2b170d"
+                                    VerticalOptions="Center"
+                                    Keyboard="Numeric"/>
+            
+
+            <Label Grid.Column="3"
+                   VerticalOptions="Center"
+                   TextColor="DarkRed"
+                   FontSize="20"
+                   Text="x">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding DeleteClickedCommand}"/>
                 </Label.GestureRecognizers>
             </Label>
+
+            <BoxView Grid.Row="1"
+                     Grid.ColumnSpan="4"
+                     HeightRequest="2"
+                     Color="Brown" />
         </Grid>
     </ContentView.Content>
 </ContentView>

@@ -23,6 +23,7 @@ namespace ShoppingList.ViewModels
         public AddNewItemPageViewModel(INavigationService navigationService)
         {
             NavigationService = navigationService;
+            Quantity = 1;
         }
 
         public void Initialize(INavigationParameters parameters)
