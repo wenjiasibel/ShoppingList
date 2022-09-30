@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace ShoppingList.ViewModels
 {
-    public class ShoppingListPageViewModel : BindableBase, IInitialize, INavigationAware
+    public class ShoppingListPageViewModel : BindableBase, IInitialize
     {
         #region Public Properties
         public string Name { get; set; }
@@ -59,16 +59,6 @@ namespace ShoppingList.ViewModels
                     OnUpdated = x => UpdateItem(x)
                 });
             }
-        }
-
-        public void OnNavigatedFrom(INavigationParameters parameters)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnNavigatedTo(INavigationParameters parameters)
-        {
-            throw new NotImplementedException();
         }
 
         #region Private Implementations
