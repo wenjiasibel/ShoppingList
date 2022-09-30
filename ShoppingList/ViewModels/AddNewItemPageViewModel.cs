@@ -6,28 +6,26 @@ using Prism.Navigation;
 
 namespace ShoppingList.ViewModels
 {
-    public class AddNewItemPageViewModel : BindableBase, INavigationAware
+    public class AddNewItemPageViewModel : BindableBase, IInitialize
     {
         #region Public Properties
         public string Name { get; set; }
         public int Quantity { get; set; }
         public Action<ShoppingListItemViewModel> OnSubmitClicked;
+
+        public INavigationService NavigationService { get; }
         #endregion
 
         #region Commands
         public DelegateCommand SubmitClickedCommand => new DelegateCommand(SubmitClicked);
         #endregion
 
-        public AddNewItemPageViewModel()
+        public AddNewItemPageViewModel(INavigationService navigationService)
         {
+            NavigationService = navigationService;
         }
 
-        public void OnNavigatedFrom(INavigationParameters parameters)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OnNavigatedTo(INavigationParameters parameters)
+        public void Initialize(INavigationParameters parameters)
         {
             parameters.TryGetValue(nameof(OnSubmitClicked), out OnSubmitClicked);
         }
@@ -37,9 +35,10 @@ namespace ShoppingList.ViewModels
         {
             OnSubmitClicked?.Invoke(new ShoppingListItemViewModel()
             {
-                Name = this.Name,
-                Quantity = this.Quantity
+                Name = Name,
+                Quantity = Quantity
             });
+            NavigationService.GoBackAsync();
         }
         #endregion
     }

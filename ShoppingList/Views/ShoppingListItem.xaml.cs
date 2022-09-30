@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace ShoppingList.Views
 {
-    public partial class ShoppingListItem : ContentPage
+    public partial class ShoppingListItem : ContentView
     {
         public ShoppingListItem()
         {

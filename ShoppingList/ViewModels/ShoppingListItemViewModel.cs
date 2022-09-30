@@ -1,9 +1,10 @@
 ﻿using System;
 using Prism.Commands;
+using Prism.Mvvm;
 
 namespace ShoppingList.ViewModels
 {
-    public class ShoppingListItemViewModel
+    public class ShoppingListItemViewModel : BindableBase
     {
         #region Public Properties
         public string Name { get; set; }

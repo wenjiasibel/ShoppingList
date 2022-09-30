@@ -26,11 +26,9 @@ namespace ShoppingList
             // Instance Registration
             containerRegistry.RegisterInstance(containerRegistry);
 
-            // Navigation Registration
-            containerRegistry.RegisterForNavigation<NavigationPage>();
-
             // Page Registration
             containerRegistry.RegisterForNavigation<ShoppingListPage, ShoppingListPageViewModel>();
+            containerRegistry.RegisterForNavigation<AddNewItemPage, AddNewItemPageViewModel>();
         }
 
         protected override void OnStart()

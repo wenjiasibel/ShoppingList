@@ -55,14 +55,14 @@ namespace ShoppingList.ViewModels
             {
                 { nameof(AddNewItemPageViewModel.OnSubmitClicked), callback }
             };
-            await NavigationService.NavigateAsync($"/{nameof(NavigationPage)}/{nameof(AddNewItemPage)}", navigationParams);
+            var result = await NavigationService.NavigateAsync($"{nameof(AddNewItemPage)}", navigationParams);
         }
 
         private void AddItem(ShoppingListItemViewModel item)
         {
-            item.OnDeleteClicked = item =>
+            item.OnDeleteClicked = x =>
             {
-                ShoppingListItemViewModels.Remove(item);
+                ShoppingListItemViewModels.Remove(x);
             };
             ShoppingListItemViewModels.Add(item);
         }
