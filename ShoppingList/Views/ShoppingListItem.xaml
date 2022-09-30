@@ -11,6 +11,7 @@
               ColumnSpacing="5"
               RowDefinitions="*, auto">
             <CheckBox Grid.Column="0"
+                      IsChecked="{Binding IsChecked}"
                       Color="Brown"/>
 
             <Label Grid.Column="1"

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using Prism.AppModel;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using ShoppingList.Models;
 using ShoppingList.Views;
 using Xamarin.Forms;
 
@@ -17,6 +19,19 @@ namespace ShoppingList.ViewModels
         public Action<ShoppingListItemViewModel> OnDeleteClicked;
 
         public ObservableCollection<ShoppingListItemViewModel> ShoppingListItemViewModels { get; }
+
+        static Database database;
+        public static Database Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new Database(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "items.db3"));
+                }
+                return database;
+            }
+        }
 
         public INavigationService NavigationService { get; }
         #endregion
@@ -32,18 +47,18 @@ namespace ShoppingList.ViewModels
             ShoppingListItemViewModels = new ObservableCollection<ShoppingListItemViewModel>();
         }
 
-        public void Initialize(INavigationParameters parameters)
+        public async void Initialize(INavigationParameters parameters)
         {
             // Initialize list items
-            ShoppingListItemViewModels.Add(new ShoppingListItemViewModel()
+            var items = await Database.GetItemsAsync();
+            foreach (Item item in items)
             {
-                Name = "Apple pancake",
-                Quantity = 2,
-                OnDeleteClicked = x =>
+                ShoppingListItemViewModels.Add(new ShoppingListItemViewModel(item)
                 {
-                    ShoppingListItemViewModels.Remove(x);
-                }
-        });
+                    OnDeleteClicked = x => DeleteItem(x),
+                    OnUpdated = x => UpdateItem(x)
+                });
+            }
         }
 
         public void OnNavigatedFrom(INavigationParameters parameters)
@@ -67,13 +82,30 @@ namespace ShoppingList.ViewModels
             var result = await NavigationService.NavigateAsync($"{nameof(AddNewItemPage)}", navigationParams);
         }
 
-        private void AddItem(ShoppingListItemViewModel item)
+        private async void AddItem(ShoppingListItemViewModel item)
         {
-            item.OnDeleteClicked = x =>
-            {
-                ShoppingListItemViewModels.Remove(x);
-            };
+            item.OnDeleteClicked = x => ShoppingListItemViewModels.Remove(x);
+            item.OnUpdated = x => UpdateItem(x);
             ShoppingListItemViewModels.Add(item);
+
+            var newItem = new Item()
+            {
+                Name = item.Name,
+                Quantity = item.Quantity,
+                IsChecked = item.IsChecked
+            };
+            await Database.SaveItemAsync(newItem);
+        }
+
+        private async void DeleteItem(ShoppingListItemViewModel item)
+        {
+            ShoppingListItemViewModels.Remove(item);
+            await Database.DeleteItemAsync(item.Model);
+        }
+
+        private async void UpdateItem(ShoppingListItemViewModel item)
+        {
+            await Database.UpdateItemAsync(item.Model);
         }
         #endregion
     }

@@ -3,6 +3,7 @@ using Prism.AppModel;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
+using ShoppingList.Models;
 
 namespace ShoppingList.ViewModels
 {
@@ -34,7 +35,8 @@ namespace ShoppingList.ViewModels
         #region Private Implementations
         private void SubmitClicked()
         {
-            OnSubmitClicked?.Invoke(new ShoppingListItemViewModel()
+            var newItem = new Item() { Name = Name, Quantity = Quantity };
+            OnSubmitClicked?.Invoke(new ShoppingListItemViewModel(newItem)
             {
                 Name = Name,
                 Quantity = Quantity
